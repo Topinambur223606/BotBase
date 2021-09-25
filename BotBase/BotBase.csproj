@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <PackageId>Topinambur.BotBase</PackageId>
     <Authors>Topinambur223606</Authors>
   </PropertyGroup>
@@ -10,6 +10,7 @@
   <PropertyGroup Condition="$(Configuration) == Release">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageOutputPath>$(LOCAL_NUGET_PKG_REPO)</PackageOutputPath>
+    <NuspecFile>pkgInfo.nuspec</NuspecFile>
   </PropertyGroup>
   
   <ItemGroup>
