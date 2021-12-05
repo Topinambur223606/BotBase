@@ -67,7 +67,7 @@ namespace BotBase.Utils
             }
             else if (resultType.IsPrimitive)
             {
-                return Convert.ChangeType(value, resultType);
+                return Convert.ChangeType(value, resultType, CultureInfo.InvariantCulture);
             }
             else
             {
@@ -85,7 +85,7 @@ namespace BotBase.Utils
                     }
                     else
                     {
-                        return JsonConvert.DeserializeObject(value, resultType);
+                        return JsonConvert.DeserializeObject(value, resultType, new JsonSerializerSettings { Culture = CultureInfo.InvariantCulture });
                     }
                 }
             }
