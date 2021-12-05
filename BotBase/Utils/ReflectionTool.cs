@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
 
 namespace BotBase.Utils
@@ -70,14 +71,22 @@ namespace BotBase.Utils
             }
             else
             {
-                MethodInfo parseMethod = resultType.GetMethod("Parse", new Type[] { typeof(string) });
+                MethodInfo parseMethod = resultType.GetMethod("Parse", new Type[] { typeof(string), typeof(IFormatProvider) });
                 if (parseMethod != null)
                 {
-                    return parseMethod.Invoke(null, new object[] { value });
+                    return parseMethod.Invoke(null, new object[] { value, CultureInfo.InvariantCulture });
                 }
                 else
                 {
-                    return JsonConvert.DeserializeObject(value, resultType);
+                    parseMethod = resultType.GetMethod("Parse", new Type[] { typeof(string) });
+                    if (parseMethod != null)
+                    {
+                        return parseMethod.Invoke(null, new object[] { value });
+                    }
+                    else
+                    {
+                        return JsonConvert.DeserializeObject(value, resultType);
+                    }
                 }
             }
         }
