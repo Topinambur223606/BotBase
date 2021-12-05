@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageId>Topinambur.BotBase</PackageId>
     <Authors>Topinambur223606</Authors>
     <Description>Tools for developing Telegram bots</Description>
