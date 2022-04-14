@@ -21,7 +21,7 @@ namespace BotBase.Utils
             return sb.ToString();
         }
 
-        public static Task ReplyWithTextToMessageAsync(this ITelegramBotClient botClient, Message message, string text, ParseMode parseMode = ParseMode.Default)
+        public static Task ReplyWithTextToMessageAsync(this ITelegramBotClient botClient, Message message, string text, ParseMode parseMode = ParseMode.MarkdownV2)
         {
             return botClient.SendTextMessageAsync(message.Chat.Id, text, parseMode, replyToMessageId: message.MessageId);
         }
